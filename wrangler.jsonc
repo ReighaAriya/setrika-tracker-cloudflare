@@ -1,0 +1,35 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "setrika-tracker-lorong-6",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-12",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api/*",
+      "/ws"
+    ]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "setrika-tracker-db",
+      "database_id": "4b0def65-dd53-406f-887e-69fd6c0d564f"
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "TRACKER_HUB",
+        "class_name": "TrackerHub"
+      }
+    ]
+  },
+  "exports": {
+    "TrackerHub": {
+      "type": "durable-object",
+      "storage": "sqlite"
+    }
+  }
+}
